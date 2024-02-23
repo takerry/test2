@@ -1,4 +1,5 @@
 public class Element {
+    static int shag = -1;
     int number;
     Element element1;
     Element element2;
@@ -27,10 +28,9 @@ public class Element {
         }
 
     }
-    private Element get() {
-        return this;
-    }
+
     public Element search(int number) {
+        shag++;
         if (number == this.number) {
             return this;
         }
@@ -41,5 +41,19 @@ public class Element {
             return element1.search(number);
         }
         return null;
+    }
+    public void showAll() {
+        if (element2 != null) {
+            System.out.print(number + " ==> " + element2.number + " and ");
+        } else {
+            System.out.print(number + " ==> " + "null" + " and ");
+        }
+        if (element1 != null) {
+            System.out.println(number + " ==> " + element1.number);
+        } else {
+            System.out.println(number + " ==> " + "null");
+        }
+        if (element2 != null) element2.showAll();
+        if (element1 != null) element1.showAll();
     }
 }
